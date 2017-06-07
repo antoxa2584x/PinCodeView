@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/antoxa2584x/PinCodeView.svg)](https://jitpack.io/#antoxa2584x/PinCodeView)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PinCodeView-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5852) [![](https://jitpack.io/v/antoxa2584x/PinCodeView.svg)](https://jitpack.io/#antoxa2584x/PinCodeView)
 
 PinCodeView
 =====================
