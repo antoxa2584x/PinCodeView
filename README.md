@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/antoxa2584x/PinCodeView.svg)](https://jitpack.io/#antoxa2584x/PinCodeView)
+
 PinCodeView
 =====================
  `PinCodeView` is Android UI library for replace `EditText`'s PIN input with pretty customizable view.
