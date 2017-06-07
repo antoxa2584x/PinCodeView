@@ -8,7 +8,26 @@ PinCodeView
 ![](images/preview.jpg)  
 
  See demo app for usage example.
- 
+
+Installation
+============
+
+ Edit your master `gradle.build` file and **add** `maven { url 'https://jitpack.io' }` to your current
+ `repositories` block content (if you use other jitpack hosted libraries, then this step can be skipped):
+
+    allprojects {
+      repositories {
+        maven { url 'https://jitpack.io' }
+        }
+    }
+
+ Next, edit your **module**'s `build.gradle` and the following dependency:
+
+    compile 'com.github.antoxa2584x:PinCodeView:<VERSION>'
+
+ For recent value of `<VERSION>` consult [library releases](https://github.com/antoxa2584x/PinCodeView/releases)
+ or jitpack badge: [![Release](https://jitpack.io/v/antoxa2584x/PinCodeView.svg)](https://jitpack.io/#antoxa2584x/PinCodeView/v1.0)
+
 ## How To Use
 ### In Xml
 ```xml
