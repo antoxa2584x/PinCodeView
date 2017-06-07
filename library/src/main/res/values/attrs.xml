@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="PinCodeView">
+        <attr name="pcv_pin_length" format="integer" />
+        <attr name="pcv_pin_outer_color" format="color" />
+        <attr name="pcv_pin_inner_color" format="color" />
+        <attr name="pcv_pin_error_color" format="color" />
+        <attr name="pcv_pin_type" />
+    </declare-styleable>
+
+    <attr name="pcv_pin_type">
+        <enum name="unlock" value="0" />
+        <enum name="enter_pin" value="1" />
+    </attr>
+
+</resources>

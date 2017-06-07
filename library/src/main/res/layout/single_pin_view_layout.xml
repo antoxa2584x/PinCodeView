@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <pincodeview.devs.goldenpie.com.library.view.CircleView
+            android:id="@+id/outer_pin_view"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true" />
+
+        <pincodeview.devs.goldenpie.com.library.view.CircleView
+            android:id="@+id/inner_pin_view"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignBottom="@id/outer_pin_view"
+            android:layout_alignEnd="@id/outer_pin_view"
+            android:layout_alignLeft="@id/outer_pin_view"
+            android:layout_alignRight="@id/outer_pin_view"
+            android:layout_alignStart="@id/outer_pin_view"
+            android:layout_alignTop="@id/outer_pin_view"
+            android:layout_margin="8dp"
+            android:alpha="0.3" />
+    </RelativeLayout>
+</FrameLayout>
