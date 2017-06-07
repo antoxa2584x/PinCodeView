@@ -39,7 +39,7 @@ pinCodeView.setPinLenght(lenght);
 ```
 MIT License
 
-Copyright (c) 2017 WillyYu
+Copyright (c) 2017 antoxa2584x
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
