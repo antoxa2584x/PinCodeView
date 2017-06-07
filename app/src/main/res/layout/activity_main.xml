@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context="com.goldenpie.devs.pincodeview.MainActivity">
+    tools:context="com.goldenpie.devs.pincodeview.example.MainActivity">
 
-    <pincodeview.devs.goldenpie.com.library.view.PinCodeView
+    <com.goldenpie.devs.pincodeview.PinCodeView
         android:id="@+id/ci"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        app:pcv_pin_error_color="@color/accent"
+        app:pcv_pin_inner_color="@color/colorPrimaryDark"
+        app:pcv_pin_length="4"
+        app:pcv_pin_outer_color="@color/colorPrimary"
+        app:pcv_pin_type="unlock" />
 
     <LinearLayout
         android:layout_width="match_parent"

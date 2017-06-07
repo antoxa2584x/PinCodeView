@@ -1,4 +1,4 @@
-package pincodeview.devs.goldenpie.com.library;
+package com.goldenpie.devs.pincodeview.core;
 
 import android.content.Context;
 import android.os.Handler;

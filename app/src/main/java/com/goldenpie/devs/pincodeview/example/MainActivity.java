@@ -1,4 +1,4 @@
-package com.goldenpie.devs.pincodeview;
+package com.goldenpie.devs.pincodeview.example;
 
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -10,12 +10,12 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.goldenpie.devs.pincodeview.PinCodeView;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 
-import pincodeview.devs.goldenpie.com.library.core.LOCK_TYPE;
-import pincodeview.devs.goldenpie.com.library.core.Listeners;
-import pincodeview.devs.goldenpie.com.library.view.PinCodeView;
+import com.goldenpie.devs.pincodeview.core.LOCK_TYPE;
+import com.goldenpie.devs.pincodeview.core.Listeners;
 
 public class MainActivity extends AppCompatActivity implements Listeners.PinEnteredListener,
         Listeners.PinReEnterListener, Listeners.PinMismatchListener, View.OnClickListener {
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
 
         initView();
 
+        pinCodeView.setLockType(LOCK_TYPE.ENTER_PIN);
         pinCodeView.setPinEnteredListener(this);
         pinCodeView.setPinReEnterListener(this);
         pinCodeView.setPinMismatchListener(this);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                pinCodeView.setPinCount(progress);
+                pinCodeView.setPinLenght(progress);
             }
 
             @Override

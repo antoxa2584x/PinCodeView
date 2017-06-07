@@ -1,4 +1,4 @@
-package pincodeview.devs.goldenpie.com.library.view;
+package com.goldenpie.devs.pincodeview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,10 +23,9 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-import pincodeview.devs.goldenpie.com.library.R;
-import pincodeview.devs.goldenpie.com.library.Utils;
-import pincodeview.devs.goldenpie.com.library.core.LOCK_TYPE;
-import pincodeview.devs.goldenpie.com.library.core.Listeners;
+import com.goldenpie.devs.pincodeview.core.Utils;
+import com.goldenpie.devs.pincodeview.core.LOCK_TYPE;
+import com.goldenpie.devs.pincodeview.core.Listeners;
 
 public class PinCodeView extends LinearLayout implements View.OnClickListener {
 
@@ -281,7 +280,7 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
         this.errorColor = errorColor;
     }
 
-    public void setPinCount(int pinCount) {
+    public void setPinLenght(int pinCount) {
         this.pinCount = pinCount;
         setUpPins();
     }

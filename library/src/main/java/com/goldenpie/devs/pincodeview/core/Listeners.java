@@ -1,4 +1,4 @@
-package pincodeview.devs.goldenpie.com.library.core;
+package com.goldenpie.devs.pincodeview.core;
 
 public class Listeners {
     public interface PinEnteredListener {

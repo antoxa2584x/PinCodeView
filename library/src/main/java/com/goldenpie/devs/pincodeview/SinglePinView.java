@@ -1,4 +1,4 @@
-package pincodeview.devs.goldenpie.com.library.view;
+package com.goldenpie.devs.pincodeview;
 
 import android.content.Context;
 import android.os.Build;
@@ -8,8 +8,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import pincodeview.devs.goldenpie.com.library.R;
 
 /**
  * Created by antoxa2584 on 07.06.17.

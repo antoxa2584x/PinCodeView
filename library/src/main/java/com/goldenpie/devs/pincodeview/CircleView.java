@@ -1,4 +1,4 @@
-package pincodeview.devs.goldenpie.com.library.view;
+package com.goldenpie.devs.pincodeview;
 
 import android.content.Context;
 import android.graphics.Canvas;
