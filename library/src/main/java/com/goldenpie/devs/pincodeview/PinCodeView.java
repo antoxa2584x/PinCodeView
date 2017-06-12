@@ -3,6 +3,7 @@ package com.goldenpie.devs.pincodeview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.ColorInt;
@@ -21,11 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-
-import com.goldenpie.devs.pincodeview.core.Utils;
 import com.goldenpie.devs.pincodeview.core.LOCK_TYPE;
 import com.goldenpie.devs.pincodeview.core.Listeners;
+import com.goldenpie.devs.pincodeview.core.Utils;
+
+import java.util.ArrayList;
 
 public class PinCodeView extends LinearLayout implements View.OnClickListener {
 
@@ -35,7 +36,13 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
     private int outerCircleColor;
     @ColorInt
     private int errorColor;
+
+    private Drawable innerDrawable;
+    private Drawable outerDrawable;
     private int pinCount;
+    private float innerAlpha;
+    private boolean tintInner = true;
+    private boolean tintOuter = true;
 
     private LinearLayout pinLayout;
     private AppCompatEditText invisibleEditText;
@@ -87,6 +94,7 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
         errorColor = ContextCompat.getColor(getContext(), R.color.accent);
         pinCount = 4;
         lockType = LOCK_TYPE.UNLOCK;
+        innerAlpha = 0.3f;
 
         if (attrs == null)
             return;
@@ -97,6 +105,19 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
         outerCircleColor = a.getColor(R.styleable.PinCodeView_pcv_pin_outer_color, outerCircleColor);
         errorColor = a.getColor(R.styleable.PinCodeView_pcv_pin_error_color, errorColor);
         pinCount = a.getInteger(R.styleable.PinCodeView_pcv_pin_length, pinCount);
+        innerAlpha = a.getFloat(R.styleable.PinCodeView_pcv_pin_inner_alpha, innerAlpha);
+        tintInner = a.getBoolean(R.styleable.PinCodeView_pcv_pin_tint_inner, tintInner);
+        tintOuter = a.getBoolean(R.styleable.PinCodeView_pcv_pin_tint_outer, tintOuter);
+
+        innerDrawable = a.getDrawable(R.styleable.PinCodeView_pcv_pin_inner_drawable);
+
+        if (innerDrawable == null)
+            innerDrawable = ContextCompat.getDrawable(getContext(), R.drawable.circle);
+
+        outerDrawable = a.getDrawable(R.styleable.PinCodeView_pcv_pin_outer_drawable);
+
+        if (outerDrawable == null)
+            outerDrawable = ContextCompat.getDrawable(getContext(), R.drawable.circle);
 
         switch (a.getInt(R.styleable.PinCodeView_pcv_pin_type, 0)) {
             case 0:
@@ -137,6 +158,16 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
             lp.setMargins(margin, margin, margin, margin);
             singlePinView.setLayoutParams(lp);
 
+            singlePinView.getInnerPinView().setImageDrawable(innerDrawable);
+            singlePinView.getOuterPinView().setImageDrawable(outerDrawable);
+
+            if (!tintInner)
+                singlePinView.getInnerPinView().clearColorFilter();
+                singlePinView.getInnerPinView().setAlpha(innerAlpha);
+            if (!tintOuter)
+                singlePinView.getOuterPinView().clearColorFilter();
+
+
             pins.add(singlePinView);
             pinLayout.addView(singlePinView);
         }
@@ -166,11 +197,11 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
                     return;
 
                 for (SinglePinView pin : pins) {
-                    pin.getInnerPinView().setAlpha(0.3f);
+                    pin.getInnerPinView().setAlpha(innerAlpha);
                 }
 
                 for (int i = 0; i < s.length(); i++) {
-                    pins.get(i).getInnerPinView().setAlpha(1);
+                    pins.get(i).getInnerPinView().setAlpha(1f);
                 }
 
                 if (lockType == LOCK_TYPE.ENTER_PIN && !TextUtils.isEmpty(pass) && s.length() == 0) {
@@ -220,14 +251,18 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
      */
     public void reset() {
         for (SinglePinView pin : pins) {
-            pin.getInnerPinView().setCircleColor(errorColor);
+            pin.getInnerPinView().setColorFilter(errorColor);
         }
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 for (SinglePinView pin : pins) {
-                    pin.getInnerPinView().setCircleColor(innerCircleColor);
+                    if (tintInner)
+                        pin.getInnerPinView().setColorFilter(innerCircleColor);
+                    else
+                        pin.getInnerPinView().clearColorFilter();
+
                 }
                 invisibleEditText.getText().clear();
             }
@@ -282,6 +317,31 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
 
     public void setPinLenght(int pinCount) {
         this.pinCount = pinCount;
+        setUpPins();
+    }
+
+    public void setInnerDrawable(Drawable innerDrawable) {
+        this.innerDrawable = innerDrawable;
+        setUpPins();
+    }
+
+    public void setOuterDrawable(Drawable outerDrawable) {
+        this.outerDrawable = outerDrawable;
+        setUpPins();
+    }
+
+    public void setInnerAlpha(float innerAlpha) {
+        this.innerAlpha = innerAlpha;
+        setUpPins();
+    }
+
+    public void setTintInner(boolean tintInner) {
+        this.tintInner = tintInner;
+        setUpPins();
+    }
+
+    public void setTintOuter(boolean tintOuter) {
+        this.tintOuter = tintOuter;
         setUpPins();
     }
 

@@ -2,11 +2,22 @@
 
 <resources>
     <declare-styleable name="PinCodeView">
+
+        <attr name="pcv_pin_inner_alpha" format="float" />
+        <attr name="pcv_pin_error_color" format="color" />
+
         <attr name="pcv_pin_length" format="integer" />
         <attr name="pcv_pin_outer_color" format="color" />
         <attr name="pcv_pin_inner_color" format="color" />
-        <attr name="pcv_pin_error_color" format="color" />
+
+        <attr name="pcv_pin_inner_drawable" format="reference" />
+        <attr name="pcv_pin_outer_drawable" format="reference" />
+
+        <attr name="pcv_pin_tint_inner" format="boolean" />
+        <attr name="pcv_pin_tint_outer" format="boolean" />
+
         <attr name="pcv_pin_type" />
+
     </declare-styleable>
 
     <attr name="pcv_pin_type">

@@ -11,17 +11,19 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.goldenpie.devs.pincodeview.PinCodeView;
-import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
-import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
-
 import com.goldenpie.devs.pincodeview.core.LOCK_TYPE;
 import com.goldenpie.devs.pincodeview.core.Listeners;
+import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
+import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 
 public class MainActivity extends AppCompatActivity implements Listeners.PinEnteredListener,
         Listeners.PinReEnterListener, Listeners.PinMismatchListener, View.OnClickListener {
 
     private PinCodeView pinCodeView;
-    private SwitchCompat switchCompat;
+    private PinCodeView drawablePinCodeView;
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
         pinCodeView.setPinEnteredListener(this);
         pinCodeView.setPinReEnterListener(this);
         pinCodeView.setPinMismatchListener(this);
+        drawablePinCodeView.setLockType(LOCK_TYPE.ENTER_PIN);
+        drawablePinCodeView.setPinEnteredListener(this);
+        drawablePinCodeView.setPinReEnterListener(this);
+        drawablePinCodeView.setPinMismatchListener(this);
     }
 
     private void initView() {
@@ -42,11 +48,33 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
         AppCompatButton outerColor = (AppCompatButton) findViewById(R.id.outer_color);
         AppCompatButton errorColor = (AppCompatButton) findViewById(R.id.error_color);
         SeekBar seekBar = (SeekBar) findViewById(R.id.sek_bar);
+        drawablePinCodeView = (PinCodeView) findViewById(R.id.ci_drawable);
+        SeekBar alphaSekBar = (SeekBar) findViewById(R.id.alpha_sek_bar);
+        SwitchCompat innerTintSwitch = (SwitchCompat) findViewById(R.id.inner_tint_switch);
+        SwitchCompat outerTintSwitch = (SwitchCompat) findViewById(R.id.outer_tint_switch);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 pinCodeView.setPinLenght(progress);
+                drawablePinCodeView.setPinLenght(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        alphaSekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                pinCodeView.setInnerAlpha(progress / 10f);
+                drawablePinCodeView.setInnerAlpha(progress / 10f);
             }
 
             @Override
@@ -62,11 +90,26 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
         innerColor.setOnClickListener(this);
         outerColor.setOnClickListener(this);
         errorColor.setOnClickListener(this);
-        switchCompat = (SwitchCompat) findViewById(R.id.switch_compat);
+        SwitchCompat switchCompat = (SwitchCompat) findViewById(R.id.switch_compat);
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 pinCodeView.setLockType(isChecked ? LOCK_TYPE.ENTER_PIN : LOCK_TYPE.UNLOCK);
+                drawablePinCodeView.setLockType(isChecked ? LOCK_TYPE.ENTER_PIN : LOCK_TYPE.UNLOCK);
+            }
+        });
+        innerTintSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                pinCodeView.setTintInner(isChecked);
+                drawablePinCodeView.setTintInner(isChecked);
+            }
+        });
+        outerTintSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                pinCodeView.setTintOuter(isChecked);
+                drawablePinCodeView.setTintOuter(isChecked);
             }
         });
     }
@@ -98,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
                     @Override
                     public void onColorChosen(@ColorInt int color) {
                         pinCodeView.setInnerCircleColor(color);
+                        drawablePinCodeView.setInnerCircleColor(color);
                         cp.dismiss();
                     }
                 });
@@ -112,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
                     @Override
                     public void onColorChosen(@ColorInt int color) {
                         pinCodeView.setOuterCircleColor(color);
+                        drawablePinCodeView.setOuterCircleColor(color);
                         cp1.dismiss();
                     }
                 });
@@ -125,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
                     @Override
                     public void onColorChosen(@ColorInt int color) {
                         pinCodeView.setErrorColor(color);
+                        drawablePinCodeView.setErrorColor(color);
                         cp2.dismiss();
                     }
                 });

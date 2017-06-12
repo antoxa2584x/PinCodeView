@@ -1,98 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical"
-    tools:context="com.goldenpie.devs.pincodeview.example.MainActivity">
+    android:clipToPadding="false"
+    android:paddingBottom="16dp">
 
-    <com.goldenpie.devs.pincodeview.PinCodeView
-        android:id="@+id/ci"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:pcv_pin_error_color="@color/accent"
-        app:pcv_pin_inner_color="@color/colorPrimaryDark"
-        app:pcv_pin_length="4"
-        app:pcv_pin_outer_color="@color/colorPrimary"
-        app:pcv_pin_type="unlock" />
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        tools:context="com.goldenpie.devs.pincodeview.example.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/inner_color"
-            android:layout_width="0dp"
+        <com.goldenpie.devs.pincodeview.PinCodeView
+            android:id="@+id/ci"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Inner color" />
+            android:layout_marginTop="24dp"
+            app:pcv_pin_error_color="@color/accent"
+            app:pcv_pin_inner_alpha="0.3"
+            app:pcv_pin_inner_color="@android:color/white"
+            app:pcv_pin_length="4"
+            app:pcv_pin_outer_color="@color/colorPrimary"
+            app:pcv_pin_type="unlock" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/outer_color"
-            android:layout_width="0dp"
+        <com.goldenpie.devs.pincodeview.PinCodeView
+            android:id="@+id/ci_drawable"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Outer color" />
+            android:layout_marginTop="24dp"
+            app:pcv_pin_error_color="@color/accent"
+            app:pcv_pin_inner_alpha="0.3"
+            app:pcv_pin_inner_color="@android:color/white"
+            app:pcv_pin_inner_drawable="@mipmap/ic_launcher"
+            app:pcv_pin_length="4"
+            app:pcv_pin_outer_color="@color/colorPrimary"
+            app:pcv_pin_outer_drawable="@mipmap/ic_launcher"
+            app:pcv_pin_type="unlock" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/error_color"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Error color" />
-    </LinearLayout>
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="PIN lenght:" />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/inner_color"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Inner color" />
 
-    <SeekBar
-        android:id="@+id/sek_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:max="20"
-        android:progress="4" />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/outer_color"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Outer color" />
 
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="PIN view type:" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/error_color"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Error color" />
+        </LinearLayout>
 
         <android.support.v7.widget.AppCompatTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Unlock" />
-
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/switch_compat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="PIN lenght:" />
+
+        <SeekBar
+            android:id="@+id/sek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="20"
+            android:progress="4" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Enter PIN" />
+            android:layout_marginTop="24dp"
+            android:text="Inner alpha:" />
 
+        <SeekBar
+            android:id="@+id/alpha_sek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="10"
+            android:progress="3" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="PIN view type:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Unlock" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_compat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Enter PIN" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Inner pin tint:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="No tint" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/inner_tint_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Tint" />
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Outer pin tint:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="No tint" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/outer_tint_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Tint" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

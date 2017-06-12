@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,8 @@ import android.widget.LinearLayout;
  */
 
 class SinglePinView extends LinearLayout {
-    private CircleView outerPinView;
-    private CircleView innerPinView;
+    private AppCompatImageView outerPinView;
+    private AppCompatImageView innerPinView;
 
     public SinglePinView(Context context) {
         super(context);
@@ -45,16 +46,23 @@ class SinglePinView extends LinearLayout {
 
         View mView = inflater.inflate(R.layout.single_pin_view_layout, this);
 
-        outerPinView = (CircleView) mView.findViewById(R.id.outer_pin_view);
-        innerPinView = (CircleView) mView.findViewById(R.id.inner_pin_view);
+        outerPinView = (AppCompatImageView) mView.findViewById(R.id.outer_pin_view);
+        innerPinView = (AppCompatImageView) mView.findViewById(R.id.inner_pin_view);
+
+        outerPinView.setImageResource(R.drawable.circle);
+        innerPinView.setImageResource(R.drawable.circle);
     }
 
     public void setColors(int innerColor, int outerColor) {
-        outerPinView.setCircleColor(outerColor);
-        innerPinView.setCircleColor(innerColor);
+        outerPinView.setColorFilter(outerColor);
+        innerPinView.setColorFilter(innerColor);
     }
 
-    public CircleView getInnerPinView() {
+    public AppCompatImageView getOuterPinView() {
+        return outerPinView;
+    }
+
+    public AppCompatImageView getInnerPinView() {
         return innerPinView;
     }
 }
