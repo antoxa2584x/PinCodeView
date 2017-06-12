@@ -5,7 +5,7 @@ PinCodeView
  `PinCodeView` is Android UI library for replace `EditText`'s PIN input with pretty customizable view.
 
 ## Demo
-![](images/preview.jpg)  
+![](images/preview.png)  
 
  See demo app for usage example.
 
@@ -32,13 +32,19 @@ Installation
 ### In Xml
 ```xml
 <com.goldenpie.devs.pincodeview.PinCodeView
+    android:id="@+id/ci_drawable"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="24dp"
     app:pcv_pin_error_color="@color/accent"
-    app:pcv_pin_inner_color="@color/colorPrimaryDark"
-    app:pcv_pin_length="4"
+    app:pcv_pin_inner_alpha="1" //Default 0.3
+    app:pcv_pin_inner_color="@android:color/white"
+    app:pcv_pin_inner_drawable="@mipmap/ic_launcher" //Default circle
+    app:pcv_pin_length="4" //Default 4
     app:pcv_pin_outer_color="@color/colorPrimary"
+    app:pcv_pin_outer_drawable="@mipmap/ic_launcher" //Default circle
+    app:pcv_pin_tint_inner="false" //Default false
+    app:pcv_pin_tint_outer="true" //Default false
     app:pcv_pin_type="unlock" />
 ```
 
@@ -54,7 +60,18 @@ pinCodeView.setOuterCircleColor(color);
 pinCodeView.setErrorColor(color);
 pinCodeView.setLockType(isChecked ? LOCK_TYPE.ENTER_PIN : LOCK_TYPE.UNLOCK);
 pinCodeView.setPinLenght(lenght);
+pinCodeView.setInnerAlpha(1);
+pinCodeView.setTintInner(false);
+pinCodeView.setTintOuter(false);
+pinCodeView.setInnerDrawable(ContextCompat.getDrawable(this, R.drawable.circle));
+pinCodeView.setOuterDrawable(ContextCompat.getDrawable(this, R.drawable.circle));
 ```
+
+## Changelog
+### v1.2
+- custom pin drawable 
+- inner pin alpha 
+- use tint or not
 
 ## License
 ```
