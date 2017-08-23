@@ -50,21 +50,21 @@ Installation
 
 ### In Your Code
 ```java
-PinCodeView pinCodeView = new PinCodeView(this);
-pinCodeView.setLockType(LOCK_TYPE.ENTER_PIN);
-pinCodeView.setPinEnteredListener(this);
-pinCodeView.setPinReEnterListener(this);
-pinCodeView.setPinMismatchListener(this);
-pinCodeView.setInnerCircleColor(color);
-pinCodeView.setOuterCircleColor(color);
-pinCodeView.setErrorColor(color);
-pinCodeView.setLockType(isChecked ? LOCK_TYPE.ENTER_PIN : LOCK_TYPE.UNLOCK);
-pinCodeView.setPinLenght(lenght);
-pinCodeView.setInnerAlpha(1);
-pinCodeView.setTintInner(false);
-pinCodeView.setTintOuter(false);
-pinCodeView.setInnerDrawable(ContextCompat.getDrawable(this, R.drawable.circle));
-pinCodeView.setOuterDrawable(ContextCompat.getDrawable(this, R.drawable.circle));
+PinCodeView pinCodeView = new PinCodeView(this)
+    .setLockType(LOCK_TYPE.ENTER_PIN)
+    .setPinEnteredListener(this)
+    .setPinReEnterListener(this)
+    .setPinMismatchListener(this)
+    .setInnerCircleColor(color)
+    .setOuterCircleColor(color)
+    .setErrorColor(color)
+    .setLockType(isChecked ? LOCK_TYPE.ENTER_PIN : LOCK_TYPE.UNLOCK)
+    .setPinLenght(lenght)
+    .setInnerAlpha(1)
+    .setTintInner(false)
+    .setTintOuter(false)
+    .setInnerDrawable(ContextCompat.getDrawable(this, R.drawable.circle))
+    .setOuterDrawable(ContextCompat.getDrawable(this, R.drawable.circle));
 ```
 
 ## Changelog
