@@ -295,65 +295,78 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
      *
      * @param lockType
      */
-    public void setLockType(LOCK_TYPE lockType) {
+    public PinCodeView setLockType(LOCK_TYPE lockType) {
         this.lockType = lockType;
         this.pass = null;
         clear();
+        return this;
     }
 
-    public void setInnerCircleColor(@ColorInt int innerCircleColor) {
+    public PinCodeView setInnerCircleColor(@ColorInt int innerCircleColor) {
         this.innerCircleColor = innerCircleColor;
         setUpPins();
+        return this;
     }
 
-    public void setOuterCircleColor(@ColorInt int outerCircleColor) {
+    public PinCodeView setOuterCircleColor(@ColorInt int outerCircleColor) {
         this.outerCircleColor = outerCircleColor;
         setUpPins();
+        return this;
     }
 
-    public void setErrorColor(@ColorInt int errorColor) {
+    public PinCodeView setErrorColor(@ColorInt int errorColor) {
         this.errorColor = errorColor;
+        return this;
     }
 
-    public void setPinLenght(int pinCount) {
+    public PinCodeView setPinLenght(int pinCount) {
         this.pinCount = pinCount;
         setUpPins();
+        return this;
     }
 
-    public void setInnerDrawable(Drawable innerDrawable) {
+    public PinCodeView setInnerDrawable(Drawable innerDrawable) {
         this.innerDrawable = innerDrawable;
         setUpPins();
+        return this;
     }
 
-    public void setOuterDrawable(Drawable outerDrawable) {
+    public PinCodeView setOuterDrawable(Drawable outerDrawable) {
         this.outerDrawable = outerDrawable;
         setUpPins();
+        return this;
     }
 
-    public void setInnerAlpha(float innerAlpha) {
+    public PinCodeView setInnerAlpha(float innerAlpha) {
         this.innerAlpha = innerAlpha;
         setUpPins();
+        return this;
     }
 
-    public void setTintInner(boolean tintInner) {
+    public PinCodeView setTintInner(boolean tintInner) {
         this.tintInner = tintInner;
         setUpPins();
+        return this;
     }
 
-    public void setTintOuter(boolean tintOuter) {
+    public PinCodeView setTintOuter(boolean tintOuter) {
         this.tintOuter = tintOuter;
         setUpPins();
+        return this;
     }
 
-    public void setPinEnteredListener(Listeners.PinEnteredListener pinEnteredListener) {
+    public PinCodeView setPinEnteredListener(Listeners.PinEnteredListener pinEnteredListener) {
         this.pinEnteredListener = pinEnteredListener;
+        return this;
     }
 
-    public void setPinMismatchListener(Listeners.PinMismatchListener pinMismatchListener) {
+    public PinCodeView setPinMismatchListener(Listeners.PinMismatchListener pinMismatchListener) {
         this.pinMismatchListener = pinMismatchListener;
+        return this;
     }
 
-    public void setPinReEnterListener(Listeners.PinReEnterListener pinReEnterListener) {
+    public PinCodeView setPinReEnterListener(Listeners.PinReEnterListener pinReEnterListener) {
         this.pinReEnterListener = pinReEnterListener;
+        return this;
     }
 }
