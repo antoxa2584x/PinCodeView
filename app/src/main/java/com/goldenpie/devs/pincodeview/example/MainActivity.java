@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements Listeners.PinEnte
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                pinCodeView.setPinLenght(progress);
-                drawablePinCodeView.setPinLenght(progress);
+                pinCodeView.setPinLength(progress);
+                drawablePinCodeView.setPinLength(progress);
             }
 
             @Override

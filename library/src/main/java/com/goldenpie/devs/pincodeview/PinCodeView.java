@@ -319,7 +319,7 @@ public class PinCodeView extends LinearLayout implements View.OnClickListener {
         return this;
     }
 
-    public PinCodeView setPinLenght(int pinCount) {
+    public PinCodeView setPinLength(int pinCount) {
         this.pinCount = pinCount;
         setUpPins();
         return this;
