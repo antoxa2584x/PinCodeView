@@ -15,7 +15,7 @@
         tools:context="com.goldenpie.devs.pincodeview.example.MainActivity">
 
         <com.goldenpie.devs.pincodeview.PinCodeView
-            android:id="@+id/ci"
+            android:id="@+id/pinCodeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -27,7 +27,7 @@
             app:pcv_pin_type="unlock" />
 
         <com.goldenpie.devs.pincodeview.PinCodeView
-            android:id="@+id/ci_drawable"
+            android:id="@+id/drawablePinCodeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -47,21 +47,21 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/inner_color"
+                android:id="@+id/innerColor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Inner color" />
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/outer_color"
+                android:id="@+id/outerColor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Outer color" />
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/error_color"
+                android:id="@+id/errorColor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,7 +75,7 @@
             android:text="PIN lenght:" />
 
         <SeekBar
-            android:id="@+id/sek_bar"
+            android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -89,7 +89,7 @@
             android:text="Inner alpha:" />
 
         <SeekBar
-            android:id="@+id/alpha_sek_bar"
+            android:id="@+id/alphaSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -117,7 +117,7 @@
                 android:text="Unlock" />
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/switch_compat"
+                android:id="@+id/switchCompat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -152,7 +152,7 @@
                 android:text="No tint" />
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/inner_tint_switch"
+                android:id="@+id/innerTintSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true" />
@@ -187,7 +187,7 @@
                 android:text="No tint" />
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/outer_tint_switch"
+                android:id="@+id/outerTintSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true" />
