@@ -41,8 +41,6 @@ internal class SinglePinView : LinearLayout {
             outerPinView = findViewById<View>(R.id.outer_pin_view) as AppCompatImageView
             innerPinView = findViewById<View>(R.id.inner_pin_view) as AppCompatImageView
         }
-
-        listOf(outerPinView, innerPinView).onEach { it.setImageResource(R.drawable.circle) }
     }
 
     fun setColors(innerColor: Int, outerColor: Int) {
