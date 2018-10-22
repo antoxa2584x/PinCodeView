@@ -27,23 +27,26 @@ import java.util.*
 
 open class PinCodeView : LinearLayout, View.OnClickListener {
 
+    private lateinit var pinLayout: LinearLayout
+    private lateinit var invisibleEditText: AppCompatEditText
+
+    private lateinit var lockType: LockType
+
     @ColorInt
-    private var innerCircleColor: Int = 0
+    private var innerCircleColor = 0
     @ColorInt
-    private var outerCircleColor: Int = 0
+    private var outerCircleColor = 0
     @ColorInt
-    private var errorColor: Int = 0
+    private var errorColor = 0
+
+    private var pinCount = 0
+    private var innerAlpha = 0f
 
     private var innerDrawable: Drawable? = null
     private var outerDrawable: Drawable? = null
-    private var pinCount: Int = 0
-    private var innerAlpha: Float = 0.toFloat()
     private var tintInner = true
     private var tintOuter = true
 
-    private lateinit var pinLayout: LinearLayout
-    private lateinit var invisibleEditText: AppCompatEditText
-    private var lockType: LockType? = null
     private var pass: String? = null
 
     private var pinEnteredListener: Listeners.PinEnteredListener? = null
@@ -100,10 +103,10 @@ open class PinCodeView : LinearLayout, View.OnClickListener {
             tintOuter = getBoolean(R.styleable.PinCodeView_pcv_pin_tint_outer, tintOuter)
 
             innerDrawable = getDrawable(R.styleable.PinCodeView_pcv_pin_inner_drawable)
-            innerDrawable?:run { innerDrawable = ContextCompat.getDrawable(context, R.drawable.circle) }
+            innerDrawable ?: run { innerDrawable = ContextCompat.getDrawable(context, R.drawable.circle) }
 
             outerDrawable = getDrawable(R.styleable.PinCodeView_pcv_pin_outer_drawable)
-            outerDrawable?:run { outerDrawable = ContextCompat.getDrawable(context, R.drawable.circle) }
+            outerDrawable ?: run { outerDrawable = ContextCompat.getDrawable(context, R.drawable.circle) }
 
             when (getInt(R.styleable.PinCodeView_pcv_pin_type, 0)) {
                 0 -> lockType = LockType.UNLOCK
@@ -180,13 +183,12 @@ open class PinCodeView : LinearLayout, View.OnClickListener {
                 if (pinCount <= 0)
                     return
 
-                for (pin in pins) {
-                    pin.innerPinView.alpha = innerAlpha
-                }
+                pins.asSequence()
+                        .map { it.innerPinView }
+                        .onEach { alpha = innerAlpha }
 
-                for (i in 0 until s.length) {
-                    pins[i].innerPinView.alpha = 1f
-                }
+                (0 until s.length).forEach { pins[it].innerPinView.alpha = 1f }
+
 
                 if (lockType == LockType.ENTER_PIN && !pass.isNullOrEmpty() && s.isEmpty()) {
                     pinReEnterListener?.onPinReEnterStarted()
@@ -204,9 +206,7 @@ open class PinCodeView : LinearLayout, View.OnClickListener {
                         invisibleEditText.text!!.clear()
                     } else {
                         if (pass != s.toString()) {
-
                             reset()
-
                             pinMismatchListener?.onPinMismatch()
 
                             return
@@ -229,20 +229,17 @@ open class PinCodeView : LinearLayout, View.OnClickListener {
      * Reset pin code view with error style
      */
     fun reset() {
-        for (pin in pins) {
-            pin.innerPinView.setColorFilter(errorColor)
-        }
+        pins.onEach { it.innerPinView.setColorFilter(errorColor) }
 
         Handler().postDelayed({
-            for (pin in pins) {
-                pin.innerPinView.apply {
-                    if (tintInner)
-                        setColorFilter(innerCircleColor)
-                    else
-                        clearColorFilter()
-                }
-
-            }
+            pins.asSequence()
+                    .map { it.innerPinView }
+                    .onEach {
+                        if (tintInner)
+                            it.setColorFilter(innerCircleColor)
+                        else
+                            it.clearColorFilter()
+                    }
 
             invisibleEditText.text!!.clear()
         }, 500)
@@ -257,13 +254,12 @@ open class PinCodeView : LinearLayout, View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        val id = v.id
-
-        if (id == R.id.pin_layout) {
-            with(invisibleEditText) {
-                clearFocus()
-                requestFocus()
-            }
+        when {
+            v.id == R.id.pin_layout ->
+                with(invisibleEditText) {
+                    clearFocus()
+                    requestFocus()
+                }
         }
     }
 

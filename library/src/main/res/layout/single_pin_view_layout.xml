@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/outer_pin_view"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/circle" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/outer_pin_view"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_centerInParent="true"
-            android:scaleType="centerInside"/>
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/inner_pin_view"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignBottom="@id/outer_pin_view"
-            android:layout_alignEnd="@id/outer_pin_view"
-            android:layout_alignLeft="@id/outer_pin_view"
-            android:layout_alignRight="@id/outer_pin_view"
-            android:layout_alignStart="@id/outer_pin_view"
-            android:layout_alignTop="@id/outer_pin_view"
-            android:layout_margin="8dp"
-            android:scaleType="centerInside" />
-    </RelativeLayout>
-</FrameLayout>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/inner_pin_view"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/circle" />
+</RelativeLayout>

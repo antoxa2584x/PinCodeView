@@ -11,6 +11,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal" />
 
     <android.support.v7.widget.AppCompatEditText
